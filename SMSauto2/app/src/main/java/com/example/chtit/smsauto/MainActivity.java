@@ -7,19 +7,27 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private enum States {E1, E2, E3, E4};
     private States CurrentState;
     Button bouton1, bouton2, bouton3, bouton4;
 
+    public Song david = new Song("David Guetta", "Memories", R.drawable.david_guetta);
+    public Song nirvana = new Song("Nirvana", "Smells Like Teen Spirit", R.drawable.nirvana);
+    public Song robin = new Song("Robin Des Bois", "Ne Renoncez Jamais", R.drawable.robin_des_bois);
+    public Song sean = new Song("Sean Paul", "She Doesn't Mind", R.drawable.sean_paul);
+
+    public ArrayList<Song> listSong = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bouton1 = (Button) findViewById(R.id.bouton1);
+        /*bouton1 = (Button) findViewById(R.id.bouton1);
         bouton2 = (Button) findViewById(R.id.bouton2);
         bouton3 = (Button) findViewById(R.id.bouton3);
         bouton4 = (Button) findViewById(R.id.bouton4);
@@ -52,15 +60,32 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 bouton4ClickEventHandler();
             }
-        });
+        });*/
 
         mListView = (ListView) findViewById(R.id.listView);
 
+        /*ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, prenoms);*/
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, prenoms);
-        mListView.setAdapter(adapter);
+                R.layout.element_list_layout, R.id.imageAlbum);
+
+        listSong.add(david);
+        listSong.add(nirvana);
+        listSong.add(robin);
+        listSong.add(sean);
+        CustomListArrayAdapter mListAdapter1 = new CustomListArrayAdapter(this, R.layout.element_list_layout, listSong);
+        mListView.setAdapter(mListAdapter1);
+
+        /*ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
+                R.layout.element_list_layout, R.id.textView1, prenoms);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
+                R.layout.element_list_layout, R.id.textView2);*/
+
+        //mListView.setAdapter(adapter);
     }
-    private void bouton1ClickEventHandler(){
+    /*private void bouton1ClickEventHandler(){
 
         switch(CurrentState){
             case E1 :
@@ -122,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                 //interdit
                 break;
         }
-    }
+    }*/
 
     ListView mListView;
     String[] prenoms = new String[]{
@@ -147,9 +172,9 @@ public class MainActivity extends AppCompatActivity {
                 android.R.layout.simple_list_item_1, prenoms);
         mListView.setAdapter(adapter);
 
-        //pour créer son propre layout : simple_list_item_1
+        pour creer son propre layout : simple_list_item_1
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
-                R.layout.element_list_layout, R.id.textView, prenoms);
+                R.layout.element_list_layout, R.id.textView999, prenoms);
 
     }*/
 

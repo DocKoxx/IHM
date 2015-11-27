@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <ListView
+    <ImageView
+        android:id="@+id/imageAlbum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
-        android:layout_below="@+id/bouton4"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="53dp" />
+        android:src="@android:drawable/ic_input_get" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/auteurText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/imageAlbum"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/titreText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/imageAlbum"
+        android:layout_below="@id/auteurText"
+        android:text="Large Text" />
+
+</RelativeLayout>
